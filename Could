@@ -1,0 +1,15 @@
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    // Cambia esto por tu URL real de Firebase
+    const targetUrl = "https://catalogo-ce214-default-rtdb.firebaseio.com" + url.pathname + url.search;
+
+    const newRequest = new Request(targetUrl, {
+      method: request.method,
+      headers: request.headers,
+      body: request.body,
+    });
+
+    return fetch(newRequest);
+  },
+};
